@@ -108,13 +108,13 @@ router.get("/api/v2/people/search", auth_admin, async (req, res) => {
 });
 
 //get All users
-router.get("/api/v2/people/users", async (req, res) => {
+router.get("/api/v2/people/users",auth_admin, async (req, res) => {
   const users = await getAllUsers();
   res.send(users);
 });
 
 //delete user
-router.delete("/api/v2/people/users/:display_name", async (req, res) => {
+router.delete("/api/v2/people/users/:display_name",auth_admin, async (req, res) => {
   const { display_name } = req.params;
   const movie = await deleteUserByDisplay_name(display_name);
   res.send(movie);
