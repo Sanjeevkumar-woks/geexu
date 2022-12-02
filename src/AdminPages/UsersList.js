@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Avatar from "react-avatar";
 
 export default function UserList() {
   const [userList, setUserList] = useState([]);
-  const navigate = useNavigate();
 
   const get = () => {
     fetch("http://localhost:9000/users/api/v2/people/users")
@@ -31,5 +28,3 @@ export default function UserList() {
     </div>
   );
 }
-
-

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./User.css";
 import { useData } from "../App";
@@ -24,14 +24,14 @@ export default function Login() {
     setRole,
   } = getData;
 
-   function  handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    
+
     const user = {
       email,
       password,
     };
-     fetch("http://localhost:9000/users/api/v2/people/authenticate", {
+    fetch("http://localhost:9000/users/api/v2/people/authenticate", {
       method: "POST",
       body: JSON.stringify(user),
       headers: { "Content-Type": "application/json" },
@@ -43,9 +43,9 @@ export default function Login() {
     if (user_data.msg == "Sucessfull Login") {
       setLogin(true);
       setx_auth_token(user_data.result.authentication_token);
-      setRole(user_data.result.person.role.key)
-      console.log(login,x_auth_token,role)
-      navigate('/home')
+      setRole(user_data.result.person.role.key);
+      console.log(login, x_auth_token, role);
+      navigate("/home");
       //role==="user"? navigate('/'): navigate('/admin')
     } else {
       setMessage(user_data.msg);
